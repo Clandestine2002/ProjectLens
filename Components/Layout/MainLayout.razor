@@ -1,0 +1,61 @@
+﻿@inherits LayoutComponentBase
+@inject CookieThemeService CookieThemeService
+@inject ThemeService ThemeService
+
+<RadzenComponents @rendermode="InteractiveAuto" />
+
+<RadzenLayout>
+    <RadzenHeader Style="visiblity: visible; text-align: left; display: flex; min-height: 60px; height: 60px">
+        <RadzenStack Style="width: 220px; text-align: left; visiblity: visible; vertical-align: baseline; display: flex; position: relative; float: none; text-transform: none; min-width: 220px; padding-left: 5px" Orientation="Radzen.Orientation.Horizontal" Reverse="false" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Start">
+            <ChildContent>
+                <RadzenSidebarToggle Click="@(() => sidebarExpanded = !sidebarExpanded)" />
+                <RadzenLabel Text="ProjectLens" Style="font-style: italic; font-size: 22px" />
+             </ChildContent>
+        </RadzenStack>
+        <RadzenStack Style="margin-right: 0; display: flex; position: static; float: none; visiblity: visible; width: 100%" Orientation="Radzen.Orientation.Horizontal" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.SpaceAround">
+            <ChildContent>
+
+            </ChildContent>
+        </RadzenStack>
+        <RadzenStack Style="width: 300px; text-align: right; visiblity: visible; float: none; position: static; right: 0; min-width: 300px; display: flex; padding-right: 10px" Orientation="Radzen.Orientation.Horizontal" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Right" Gap="5px">
+            <RadzenAppearanceToggle LightTheme="material" DarkTheme="material-dark" ButtonStyle="Radzen.ButtonStyle.Base" ToggleShade="Radzen.Shade.Lighter" Variant="Radzen.Variant.Text" ToggleButtonStyle="Radzen.ButtonStyle.Light" ></RadzenAppearanceToggle>
+            <RadzenProfileMenu ShowIcon="true" Style="width: 150px; min-width: 150px; display: flex; visiblity: visible" Visible="true">
+                
+                <Template>
+                    <RadzenGravatar Email="clandestine2002@gmail.com">
+                    </RadzenGravatar>
+                </Template>
+
+                <ChildContent>
+                    <RadzenProfileMenuItem Icon="account_circle" Text="Profile" Path="/counter"></RadzenProfileMenuItem>
+                    <RadzenProfileMenuItem Text="Sign Out" Icon="logout"></RadzenProfileMenuItem>
+                </ChildContent>
+            </RadzenProfileMenu>
+        </RadzenStack>
+    </RadzenHeader>
+
+    <RadzenSidebar Responsive="false" Style="width: max-content" Expanded="true" FullHeight="false">
+        <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="false">
+            <RadzenPanelMenuItem Text="Overview" Icon="home"/>
+            <RadzenPanelMenuItem Text="Dashboard" Icon="dashboard"/>
+            <RadzenPanelMenuItem Text="UI Fundamentals" Icon="auto_awesome">
+                <RadzenPanelMenuItem Text="Themes" Icon="color_lens" />
+                <RadzenPanelMenuItem Text="Colors" Icon="invert_colors" />
+            </RadzenPanelMenuItem>
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+
+    <RadzenBody Style="margin-top: 10px; margin-right: 10px; margin-left: 10px; margin-bottom: 10px; border-radius: 20px; " >
+        <div class="rz-p-4">
+            @Body
+        </div>
+    </RadzenBody>
+
+    <RadzenFooter>
+        <RadzenLabel Text="ProjectLens v1.0.0 Copyright Ⓒ 2026" Style="width: 125px; font-style: italic; font-size: 12px; display: block" />
+    </RadzenFooter>
+</RadzenLayout>
+
+@code {
+    bool sidebarExpanded = true;
+}
