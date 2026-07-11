@@ -36,8 +36,8 @@
 
     <RadzenSidebar Responsive="false" Style="width: max-content" Expanded="true" FullHeight="true">
         <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="true" Multiple="false">
-            <RadzenStack Style="height: 70px; width: 100%; padding-left: 10px; padding-right: 10px" Orientation="Radzen.Orientation.Horizontal" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center">
-                <RadzenImage Style="width: 55px; min-width: 55px; margin: 0; background-repeat: no-repeat; height: auto" Path="logo.png"></RadzenImage>
+            <RadzenStack Style="height: 70px; width: 100%; padding-left: 10px; padding-right: 10px" Orientation="Radzen.Orientation.Horizontal" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Left">
+                <RadzenImage Style="width: 55px; min-width: 55px; margin: 0; background-repeat: no-repeat; height: auto" Path="https://www.radzen.com/images/logo.png"></RadzenImage>
                 <RadzenStack Visible="@(sidebarExpanded ? true:false)" Style="width: 140px; height: 100%; min-width: 140px" AlignItems="Radzen.AlignItems.Start" JustifyContent="Radzen.JustifyContent.Center" Wrap="Radzen.FlexWrap.NoWrap">
                     <RadzenLabel Text="ProjectLens" Style="text-align: left; font-size: 23px; font-weight: bold; font-style: italic" />
                 </RadzenStack>
