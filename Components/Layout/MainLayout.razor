@@ -5,11 +5,11 @@
 <RadzenComponents @rendermode="InteractiveAuto" />
 
 <RadzenLayout>
-    <RadzenHeader Style="visiblity: visible; text-align: left; display: flex; min-height: 60px; height: 60px">
+    <RadzenHeader Style="visiblity: visible; text-align: left; display: flex; min-height: 60px; height: 70px">
         <RadzenStack Style="width: 220px; text-align: left; visiblity: visible; vertical-align: baseline; display: flex; position: relative; float: none; text-transform: none; min-width: 220px; padding-left: 5px" Orientation="Radzen.Orientation.Horizontal" Reverse="false" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Start">
             <ChildContent>
-                <RadzenSidebarToggle Click="@(() => sidebarExpanded = !sidebarExpanded)" />
-                <RadzenLabel Text="ProjectLens" Style="font-style: italic; font-size: 22px" />
+                <RadzenSidebarToggle Click="SideBarExpand" />
+                <RadzenLabel Text="Dashboard" Style="font-style: italic; font-size: 22px" />
              </ChildContent>
         </RadzenStack>
         <RadzenStack Style="margin-right: 0; display: flex; position: static; float: none; visiblity: visible; width: 100%" Orientation="Radzen.Orientation.Horizontal" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.SpaceAround">
@@ -34,11 +34,20 @@
         </RadzenStack>
     </RadzenHeader>
 
-    <RadzenSidebar Responsive="false" Style="width: max-content" Expanded="true" FullHeight="false">
-        <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="false">
-            <RadzenPanelMenuItem Text="Overview" Icon="home"/>
-            <RadzenPanelMenuItem Text="Dashboard" Icon="dashboard"/>
-            <RadzenPanelMenuItem Text="UI Fundamentals" Icon="auto_awesome">
+    <RadzenSidebar Responsive="false" Style="width: max-content" Expanded="true" FullHeight="true">
+        <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="true" Multiple="false">
+            <RadzenStack Style="height: 70px; width: 100%; padding-left: 10px; padding-right: 10px" Orientation="Radzen.Orientation.Horizontal" AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center">
+                <RadzenImage Style="width: 55px; min-width: 55px; margin: 0; background-repeat: no-repeat; height: auto" Path="logo.png"></RadzenImage>
+                <RadzenStack Visible="@(sidebarExpanded ? true:false)" Style="width: 140px; height: 100%; min-width: 140px" AlignItems="Radzen.AlignItems.Start" JustifyContent="Radzen.JustifyContent.Center" Wrap="Radzen.FlexWrap.NoWrap">
+                    <RadzenLabel Text="ProjectLens" Style="text-align: left; font-size: 23px; font-weight: bold; font-style: italic" />
+                </RadzenStack>
+            </RadzenStack>
+            <RadzenPanelMenuItem Text="Dashboard" Icon="dashboard" Style=""/>
+            <RadzenPanelMenuItem Text="Projects" Icon="business_center">
+                <RadzenPanelMenuItem Text="Projects" Icon="color_lens" />
+                <RadzenPanelMenuItem Text="Tasks" Icon="task" />
+            </RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Members" Icon="groups">
                 <RadzenPanelMenuItem Text="Themes" Icon="color_lens" />
                 <RadzenPanelMenuItem Text="Colors" Icon="invert_colors" />
             </RadzenPanelMenuItem>
@@ -58,4 +67,9 @@
 
 @code {
     bool sidebarExpanded = true;
+
+    private void SideBarExpand()
+    {
+        sidebarExpanded = !sidebarExpanded;
+    }
 }
